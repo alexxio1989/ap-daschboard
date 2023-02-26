@@ -27,6 +27,10 @@ export class UtenteService extends AbstractService<UtenteDto>{
 
     super();
     this.utente = super.getObj(Constants.UTENTE)
+    if(this.utente){
+      this.logged = true;
+      this.isSU = Constants.SUPER_USER === this.utente.tipoUtente.codice;
+    }
 
     this.sbjUtente.asObservable().subscribe(next=>{
       if(next){

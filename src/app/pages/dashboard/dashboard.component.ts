@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { DialogLoginComponent } from 'src/app/dialog/dialog-login/dialog-login.component';
+import { DelegateService } from 'src/app/service/delegate.service';
+import { UtenteService } from 'src/app/service/utente.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +12,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  loaded = false;
+
+  constructor(
+    public us: UtenteService,
+    public dialog: MatDialog,
+    private route: Router,
+    private ds: DelegateService
+  ) {}
 
   ngOnInit(): void {
+    if (!this.us.logged) {
+      this.loaded = false
+      this.openLogin();
+    } else {
+      this.us.isSU;
+      if (!this.us.isSU) {
+        this.route.navigate(['']);
+      } else {
+        this.loaded = true
+      }
+    }
+
+    this.us.sbjUtente.asObservable().subscribe(next=>{
+      if(next){
+        this.loaded = true
+      }
+    });
+
+  }
+
+  openLogin() {
+    if (this.ds.isMobile) {
+      this.dialog.open(DialogLoginComponent, {
+        height: 'auto',
+        width: '95%',
+        maxWidth: '95vw',
+      });
+    } else {
+      this.dialog.open(DialogLoginComponent, {
+        height: 'auto',
+        width: '40%',
+      });
+    }
   }
 
 }

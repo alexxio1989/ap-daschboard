@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const mock = true
 export const environment = {
-  production: false
+  production: false,
+  path:mock ? "http://localhost:8080" : "https://alessiopinna-be.herokuapp.com",
+  servizio: mock ? "http://localhost:8080/servizio" : "https://alessiopinna-be.herokuapp.com/servizio",
+  utente: mock ? "http://localhost:8080" : "https://alessiopinna-be.herokuapp.com",
+  acquisto: mock ? "http://localhost:8080/acquisto" : "https://alessiopinna-be.herokuapp.com/acquisto",
+  tpl: mock ? "http://localhost:8080/tpl" : "https://alessiopinna-be.herokuapp.com/tpl",
+  mock:true
 };
 
 /*

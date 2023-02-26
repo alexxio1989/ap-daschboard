@@ -14,13 +14,26 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import { DialogLoginComponent } from './dialog/dialog-login/dialog-login.component';
+import { DialogServizioComponent } from './dialog/dialog-servizio/dialog-servizio.component';
+import { DialogTipoServizioComponent } from './dialog/dialog-tipo-servizio/dialog-tipo-servizio.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ListTipiServiziComponent } from './components/list-tipi-servizi/list-tipi-servizi.component';
+import { ListServiziComponent } from './components/list-servizi/list-servizi.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    DialogLoginComponent,
+    DialogServizioComponent,
+    DialogTipoServizioComponent,
+    ListTipiServiziComponent,
+    ListServiziComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
