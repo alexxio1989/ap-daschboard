@@ -1,11 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Constants } from '../constants/constants';
 import { ResponseServizio } from '../dto/response/responseServizio';
 import { ServizioDto } from '../dto/servizioDto';
 import { DelegateService } from './delegate.service';
-import { UtenteService } from './utente.service';
 import { RequestServizio } from '../dto/request/requestServizio';
 import { IServiceCrud } from './IServiceCrud';
 import { AbstractService } from './abstractService';
@@ -22,7 +20,6 @@ export class ServizioService extends AbstractService<ServizioDto> implements ISe
   constructor(
     private http: HttpClient,
     private ds: DelegateService,
-    private us: UtenteService,
     @Inject('environment') private environment : any
   ) {
     super();

@@ -3,5 +3,6 @@
   "dest": "../../dist/ap-dashboard-lib",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [".npmrc"]
 }

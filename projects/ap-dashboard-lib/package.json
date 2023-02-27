@@ -1,9 +1,12 @@
 {
-  "name": "ap-dashboard-lib",
-  "version": "0.0.1",
+  "name": "@alexxio1989/ap-dashboard",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^14.0.0",
     "@angular/core": "^14.0.0"
+  },
+  "repository": {
+    "url": "https://github.com/alexxio1989/ap-daschboard.git"
   },
   "dependencies": {
     "tslib": "^2.3.0"

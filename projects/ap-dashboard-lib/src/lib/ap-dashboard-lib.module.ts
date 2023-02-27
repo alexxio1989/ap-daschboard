@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { ApDashboardLibComponent } from './ap-dashboard-lib.component';
+import { DelegateService, ServizioService, TipoServizoService, UtenteService } from '../public-api';
 
 
 
 @NgModule({
   declarations: [
-    ApDashboardLibComponent
   ],
   imports: [
   ],
-  exports: [
-    ApDashboardLibComponent
+  providers:[
+    ServizioService,
+    UtenteService,
+    TipoServizoService,
+    DelegateService
   ]
 })
 export class ApDashboardLibModule { }
