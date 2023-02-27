@@ -9,10 +9,6 @@ import { DelegateService, ServizioService, TipoServizoService, UtenteService } f
   imports: [
   ],
   providers:[
-    ServizioService,
-    UtenteService,
-    TipoServizoService,
-    DelegateService
   ]
 })
 export class ApDashboardLibModule { }
