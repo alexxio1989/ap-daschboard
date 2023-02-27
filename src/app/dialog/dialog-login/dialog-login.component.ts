@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { RequestLogin } from 'src/app/dto/request/requestLogin';
-import { UtenteDto } from 'src/app/dto/utenteDto';
-import { DelegateService } from 'src/app/service/delegate.service';
-import { UtenteService } from 'src/app/service/utente.service';
+import { RequestLogin } from 'projects/ap-dashboard-lib/src/dto/request/requestLogin';
+import { UtenteDto } from 'projects/ap-dashboard-lib/src/dto/utenteDto';
+import { DelegateService, UtenteService } from 'projects/ap-dashboard-lib/src/public-api';
 
 @Component({
   selector: 'app-dialog-login',

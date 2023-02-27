@@ -20,6 +20,7 @@ import { DialogTipoServizioComponent } from './dialog/dialog-tipo-servizio/dialo
 import { HttpClientModule } from '@angular/common/http';
 import { ListTipiServiziComponent } from './components/list-tipi-servizi/list-tipi-servizi.component';
 import { ListServiziComponent } from './components/list-servizi/list-servizi.component';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { ListServiziComponent } from './components/list-servizi/list-servizi.com
     MatInputModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [{provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

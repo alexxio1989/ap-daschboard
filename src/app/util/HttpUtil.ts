@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { UtenteDto } from '../dto/utenteDto'
+import { UtenteDto } from 'projects/ap-dashboard-lib/src/dto/utenteDto';
 import { Constants } from '../constants/constants';
 
 export function getHeaderForUser(utente:UtenteDto):HttpHeaders{

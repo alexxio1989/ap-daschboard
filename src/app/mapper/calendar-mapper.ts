@@ -1,6 +1,4 @@
-import { CalendarEvent } from "angular-calendar";
-import { AcquistoDto } from "../dto/acquistoDto";
-import { EventInfo } from "../dto/EventInfo";
+
 
 export const colors: any = {
     red: {

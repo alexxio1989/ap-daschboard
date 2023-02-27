@@ -1,8 +1,7 @@
 import { CalendarEvent } from "angular-calendar";
-import { Dominio } from "../dto/dominio";
-import { EventoDto } from "../dto/eventoDto";
-import { ProdottoDto } from "../dto/prodottoDto";
-import { UtenteDto } from "../dto/utenteDto";
+import { EventoDto } from "projects/ap-dashboard-lib/src/dto/eventoDto";
+import { ProdottoDto } from "projects/ap-dashboard-lib/src/dto/prodottoDto";
+
 
 
 export function getMapProdotti(prodotti: ProdottoDto[]) : Map<String, ProdottoDto[]>{

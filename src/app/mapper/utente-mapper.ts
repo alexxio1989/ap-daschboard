@@ -1,6 +1,6 @@
+import { RequestLogin } from "projects/ap-dashboard-lib/src/dto/request/requestLogin";
+import { UtenteDto } from "projects/ap-dashboard-lib/src/dto/utenteDto";
 
-import { UtenteDto } from "../dto/utenteDto";
-import { RequestLogin } from "../dto/request/requestLogin";
 
 export function mapLoginUtente(email:string , password:string): RequestLogin{
     let utente = new UtenteDto();

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { Dominio } from 'src/app/dto/dominio';
-import { DelegateService } from 'src/app/service/delegate.service';
-import { TipoServizoService } from 'src/app/service/tipo-servizo.service';
-import { UtenteService } from 'src/app/service/utente.service';
+import { Dominio } from 'projects/ap-dashboard-lib/src/dto/dominio';
+import { DelegateService } from 'projects/ap-dashboard-lib/src/service/delegate.service';
+import { TipoServizoService } from 'projects/ap-dashboard-lib/src/service/tipo-servizo.service';
+import { UtenteService } from 'projects/ap-dashboard-lib/src/service/utente.service';
 
 @Component({
   selector: 'app-list-tipi-servizi',

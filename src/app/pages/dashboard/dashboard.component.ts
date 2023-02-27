@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DelegateService } from 'projects/ap-dashboard-lib/src/service/delegate.service';
+import { UtenteService } from 'projects/ap-dashboard-lib/src/service/utente.service';
 import { DialogLoginComponent } from 'src/app/dialog/dialog-login/dialog-login.component';
-import { DelegateService } from 'src/app/service/delegate.service';
-import { UtenteService } from 'src/app/service/utente.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,15 +1,15 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { Dominio } from 'src/app/dto/dominio';
-import { EventoDto } from 'src/app/dto/eventoDto';
-import { ImageDto } from 'src/app/dto/imageDto';
-import { ProdottoDto } from 'src/app/dto/prodottoDto';
-import { ServizioDto } from 'src/app/dto/servizioDto';
-import { TypeServizio } from 'src/app/dto/typeServizio';
+import { Dominio } from 'projects/ap-dashboard-lib/src/dto/dominio';
+import { EventoDto } from 'projects/ap-dashboard-lib/src/dto/eventoDto';
+import { ImageDto } from 'projects/ap-dashboard-lib/src/dto/imageDto';
+import { ProdottoDto } from 'projects/ap-dashboard-lib/src/dto/prodottoDto';
+import { ServizioDto } from 'projects/ap-dashboard-lib/src/dto/servizioDto';
+import { TypeServizio } from 'projects/ap-dashboard-lib/src/dto/typeServizio';
+import { DelegateService } from 'projects/ap-dashboard-lib/src/service/delegate.service';
+import { ServizioService } from 'projects/ap-dashboard-lib/src/service/servizio.service';
+import { TipoServizoService } from 'projects/ap-dashboard-lib/src/service/tipo-servizo.service';
 import { getMapEventi, getMapProdotti } from 'src/app/mapper/common-mapper';
-import { DelegateService } from 'src/app/service/delegate.service';
-import { ServizioService } from 'src/app/service/servizio.service';
-import { TipoServizoService } from 'src/app/service/tipo-servizo.service';
 
 @Component({
   selector: 'app-list-servizi',
