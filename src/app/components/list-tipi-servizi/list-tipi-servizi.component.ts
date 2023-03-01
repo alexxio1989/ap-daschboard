@@ -1,9 +1,6 @@
+import { DelegateService, DominioDto, TipoServizoService, UtenteService } from '@alexxio1989/ap-fe-core';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { Dominio } from 'projects/ap-dashboard-lib/src/dto/dominio';
-import { DelegateService } from 'projects/ap-dashboard-lib/src/service/delegate.service';
-import { TipoServizoService } from 'projects/ap-dashboard-lib/src/service/tipo-servizo.service';
-import { UtenteService } from 'projects/ap-dashboard-lib/src/service/utente.service';
 
 @Component({
   selector: 'app-list-tipi-servizi',
@@ -13,8 +10,8 @@ import { UtenteService } from 'projects/ap-dashboard-lib/src/service/utente.serv
 export class ListTipiServiziComponent implements OnInit {
 
   editorConfig: AngularEditorConfig;
-  domini:Dominio[] = []
-  typeSelected: Dominio;
+  domini:DominioDto[] = []
+  typeSelected: DominioDto;
   addAction:boolean
 
   constructor(
@@ -32,21 +29,24 @@ export class ListTipiServiziComponent implements OnInit {
       this.ts.domini = next;
     }, error => {
       this.ds.sbjSpinner.next(false);
+      if(401 === error.status){
+        this.us.sbjUtente.next(undefined)
+      }
       this.ds.sbjErrorsNotification.next(error.error + " , Codice Errore " + error.status);
     })
   }
 
   add(){
-    this.typeSelected = new Dominio();
+    this.typeSelected = new DominioDto();
     this.addAction = true;
   }
 
   close(){
-    this.typeSelected = new Dominio();
+    this.typeSelected = new DominioDto();
     this.addAction = false;
   }
 
-  edit(dominio: Dominio){
+  edit(dominio: DominioDto){
     this.typeSelected = dominio;
     this.addAction = true;
   }
@@ -64,7 +64,7 @@ export class ListTipiServiziComponent implements OnInit {
   }
 
 
-  delete(type:Dominio){
+  delete(type:DominioDto){
 
   }
 

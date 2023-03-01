@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { RequestLogin } from 'projects/ap-dashboard-lib/src/dto/request/requestLogin';
-import { UtenteDto } from 'projects/ap-dashboard-lib/src/dto/utenteDto';
-import { DelegateService, UtenteService } from 'projects/ap-dashboard-lib/src/public-api';
+import { DelegateService, RequestLogin, UtenteDto, UtenteService } from '@alexxio1989/ap-fe-core';
 
 @Component({
   selector: 'app-dialog-login',

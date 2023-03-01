@@ -1,14 +1,13 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { Dominio } from 'projects/ap-dashboard-lib/src/dto/dominio';
-import { EventoDto } from 'projects/ap-dashboard-lib/src/dto/eventoDto';
-import { ImageDto } from 'projects/ap-dashboard-lib/src/dto/imageDto';
-import { ProdottoDto } from 'projects/ap-dashboard-lib/src/dto/prodottoDto';
-import { ServizioDto } from 'projects/ap-dashboard-lib/src/dto/servizioDto';
-import { TypeServizio } from 'projects/ap-dashboard-lib/src/dto/typeServizio';
-import { DelegateService } from 'projects/ap-dashboard-lib/src/service/delegate.service';
-import { ServizioService } from 'projects/ap-dashboard-lib/src/service/servizio.service';
-import { TipoServizoService } from 'projects/ap-dashboard-lib/src/service/tipo-servizo.service';
+import { DominioDto, TypeServizioDto, UtenteService } from '@alexxio1989/ap-fe-core';
+import { EventoDto } from '@alexxio1989/ap-fe-core';
+import { ImageDto } from '@alexxio1989/ap-fe-core';
+import { ProdottoDto } from '@alexxio1989/ap-fe-core';
+import { ServizioDto } from '@alexxio1989/ap-fe-core';
+import { DelegateService } from '@alexxio1989/ap-fe-core';
+import { ServizioService } from '@alexxio1989/ap-fe-core';
+import { TipoServizoService } from '@alexxio1989/ap-fe-core';
 import { getMapEventi, getMapProdotti } from 'src/app/mapper/common-mapper';
 
 @Component({
@@ -22,7 +21,7 @@ export class ListServiziComponent implements OnInit{
   prodotti:ProdottoDto[] = []
   eventi:EventoDto[] = []
 
-  domini:Dominio[] = []
+  domini:DominioDto[] = []
 
   mapProdotti = new Map<String, ProdottoDto[]>();
   mapEventi = new Map<String, EventoDto[]>();
@@ -34,7 +33,10 @@ export class ListServiziComponent implements OnInit{
   addEventoAction : boolean;
 
 
-  constructor(public ds: DelegateService,private ss:ServizioService , private ts : TipoServizoService) { }
+  constructor(public ds: DelegateService,
+              private ss:ServizioService , 
+              private ts : TipoServizoService ,
+              public us: UtenteService) { }
 
 
   ngOnInit(): void {
@@ -49,6 +51,9 @@ export class ListServiziComponent implements OnInit{
       this.mapEventi = getMapEventi(this.eventi)
     }, error => {
       this.ds.sbjSpinner.next(false)
+      if(401 === error.status){
+        this.us.sbjUtente.next(undefined)
+      }
       this.ds.sbjErrorsNotification.next("Errore durante il recupero dei servizi")
     })
   }
@@ -96,11 +101,11 @@ export class ListServiziComponent implements OnInit{
 
     if('prodotto' === type){
       servizio = this.prodottoSelected;
-      servizio.type = TypeServizio.PRODOTTO
+      servizio.type = TypeServizioDto.PRODOTTO
       
     } else {
       servizio = this.eventoSelected;
-      servizio.type = TypeServizio.EVENTO
+      servizio.type = TypeServizioDto.EVENTO
     }
 
     this.ss.save(servizio).subscribe(next=>{

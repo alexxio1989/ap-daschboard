@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DelegateService } from 'projects/ap-dashboard-lib/src/service/delegate.service';
-import { UtenteService } from 'projects/ap-dashboard-lib/src/service/utente.service';
+import { DelegateService, UtenteService } from '@alexxio1989/ap-fe-core';
 import { DialogLoginComponent } from 'src/app/dialog/dialog-login/dialog-login.component';
 
 @Component({
@@ -37,6 +36,9 @@ export class DashboardComponent implements OnInit {
     this.us.sbjUtente.asObservable().subscribe(next=>{
       if(next){
         this.loaded = true
+      } else {
+        this.loaded = false
+        this.openLogin();
       }
     });
 

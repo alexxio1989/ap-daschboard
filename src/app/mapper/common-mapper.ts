@@ -1,6 +1,5 @@
+import { EventoDto, ProdottoDto } from "@alexxio1989/ap-fe-core";
 import { CalendarEvent } from "angular-calendar";
-import { EventoDto } from "projects/ap-dashboard-lib/src/dto/eventoDto";
-import { ProdottoDto } from "projects/ap-dashboard-lib/src/dto/prodottoDto";
 
 
 
