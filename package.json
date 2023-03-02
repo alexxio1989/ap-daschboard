@@ -38,6 +38,7 @@
     "flatpickr": "^4.6.13",
     "jquery": "^3.6.2",
     "ngx-device-detector": "^4.0.1",
+    "ngx-image-cropper": "^6.3.2",
     "ngx-spinner": "^14.0.0",
     "path": "^0.12.7",
     "rxjs": "~7.5.0",

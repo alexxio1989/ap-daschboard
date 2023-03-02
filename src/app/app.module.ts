@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListTipiServiziComponent } from './components/list-tipi-servizi/list-tipi-servizi.component';
 import { ListServiziComponent } from './components/list-servizi/list-servizi.component';
 import { environment } from 'src/environments/environment';
-
+import { ImagesEditorComponent } from './images-editor/images-editor.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { environment } from 'src/environments/environment';
     DialogServizioComponent,
     DialogTipoServizioComponent,
     ListTipiServiziComponent,
-    ListServiziComponent
+    ListServiziComponent,
+    ImagesEditorComponent
   ],
   imports: [
     HttpClientModule,
@@ -48,7 +50,8 @@ import { environment } from 'src/environments/environment';
     MatFormFieldModule,
     AngularEditorModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    ImageCropperModule
   ],
   providers: [{provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]
