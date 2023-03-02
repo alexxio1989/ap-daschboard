@@ -11,8 +11,6 @@ export class ImagesEditorComponent implements OnInit {
   @Input() images: ImageDto[] = [];
   @Output() imagesEmitter = new EventEmitter<ImageDto[]>();
   imgSelected: ImageDto;
-
-  imageChangedEvent: any = '';
   croppedImage: any = '';
   canvasRotation = 0;
   rotation = 0;
@@ -25,12 +23,12 @@ export class ImagesEditorComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
+  fileChangeEvent(event: any , img:ImageDto): void {
+    img.imageChangedEvent = event;
   }
 
-  imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
+  imageCropped(event: ImageCroppedEvent , img:ImageDto) {
+    img.base64 = event.base64;
     console.log(event, base64ToFile(event.base64));
   }
 
@@ -39,7 +37,7 @@ export class ImagesEditorComponent implements OnInit {
     console.log('Image loaded');
   }
 
-  cropperReady(sourceImageDimensions: Dimensions) {
+  cropperReady(sourceImageDimensions: Dimensions , img:ImageDto) {
     console.log('Cropper ready', sourceImageDimensions);
   }
 
@@ -115,7 +113,10 @@ export class ImagesEditorComponent implements OnInit {
     };
   }
 
-  addAction() {}
+  addAction() {
+    let newImg = new ImageDto()
+    this.images.push(newImg)
+  }
 
   emit() {
     this.imagesEmitter.emit(this.images);
