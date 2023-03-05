@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,8 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListTipiServiziComponent } from './components/list-tipi-servizi/list-tipi-servizi.component';
 import { ListServiziComponent } from './components/list-servizi/list-servizi.component';
 import { environment } from 'src/environments/environment';
-import { ImagesEditorComponent } from './images-editor/images-editor.component';
-import { ImageCropperModule } from 'ngx-image-cropper';
+import { ApFeFundamentalsLibModule } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { EditorEventoComponent } from './components/list-servizi/editor-evento/editor-evento.component';
+import { EditorProdottoComponent } from './components/list-servizi/editor-prodotto/editor-prodotto.component';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     DialogTipoServizioComponent,
     ListTipiServiziComponent,
     ListServiziComponent,
-    ImagesEditorComponent
+    EditorEventoComponent,
+    EditorProdottoComponent
   ],
   imports: [
     HttpClientModule,
@@ -51,7 +55,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     AngularEditorModule,
     MatInputModule,
     MatMenuModule,
-    ImageCropperModule
+    ApFeFundamentalsLibModule,
+    MatStepperModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]

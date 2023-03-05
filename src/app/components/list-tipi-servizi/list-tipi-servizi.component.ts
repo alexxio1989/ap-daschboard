@@ -1,4 +1,4 @@
-import { DelegateService, DominioDto, TipoServizoService, UtenteService } from '@alexxio1989/ap-fe-core';
+import { DelegateService, DominioDto, TipoServizoService, UtenteService } from '@alexxio1989/ap-fe-fundamentals-lib';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 

@@ -1,13 +1,13 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { DominioDto, TypeServizioDto, UtenteService } from '@alexxio1989/ap-fe-core';
-import { EventoDto } from '@alexxio1989/ap-fe-core';
-import { ImageDto } from '@alexxio1989/ap-fe-core';
-import { ProdottoDto } from '@alexxio1989/ap-fe-core';
-import { ServizioDto } from '@alexxio1989/ap-fe-core';
-import { DelegateService } from '@alexxio1989/ap-fe-core';
-import { ServizioService } from '@alexxio1989/ap-fe-core';
-import { TipoServizoService } from '@alexxio1989/ap-fe-core';
+import { DominioDto, TypeServizioDto, UtenteService } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { EventoDto } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { ImageDto } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { ProdottoDto } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { ServizioDto } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { DelegateService } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { ServizioService } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { TipoServizoService } from '@alexxio1989/ap-fe-fundamentals-lib';
 import { getMapEventi, getMapProdotti } from 'src/app/mapper/common-mapper';
 
 @Component({
@@ -61,7 +61,7 @@ export class ListServiziComponent implements OnInit{
   add(type:string){
     let listImages : ImageDto[] = []
     let defaultImg = new ImageDto();
-    defaultImg.imgUrl = 'default'
+    defaultImg.url = 'default'
     listImages.push(defaultImg)
     
     if('prodotto' === type){

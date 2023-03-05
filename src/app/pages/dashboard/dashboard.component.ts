@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DelegateService, UtenteService } from '@alexxio1989/ap-fe-core';
+import { DelegateService, UtenteService } from '@alexxio1989/ap-fe-fundamentals-lib';
 import { DialogLoginComponent } from 'src/app/dialog/dialog-login/dialog-login.component';
 
 @Component({

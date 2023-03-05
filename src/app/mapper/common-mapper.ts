@@ -1,4 +1,4 @@
-import { EventoDto, ProdottoDto } from "@alexxio1989/ap-fe-core";
+import { EventoDto, ProdottoDto } from "@alexxio1989/ap-fe-fundamentals-lib";
 import { CalendarEvent } from "angular-calendar";
 
 

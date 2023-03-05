@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DelegateService, RequestLogin, UtenteDto, UtenteService } from '@alexxio1989/ap-fe-core';
+import { DelegateService, RequestLogin, UtenteDto, UtenteService } from '@alexxio1989/ap-fe-fundamentals-lib';
 
 @Component({
   selector: 'app-dialog-login',

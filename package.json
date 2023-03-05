@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@alexxio1989/ap-fe-core": "^1.0.4",
+    "@alexxio1989/ap-fe-fundamentals-lib": "^0.0.2",
     "@angular/animations": "^14.0.0",
     "@angular/cli": "~14.0.0",
     "@angular/common": "^14.0.0",
