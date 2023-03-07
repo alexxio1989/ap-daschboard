@@ -9,6 +9,8 @@
   }
   :host ::ng-deep .mat-tab-labels {
     flex-direction: column;
+    padding: 10px;
+    padding-right: 15px;
   }
   :host ::ng-deep .mat-ink-bar {
     height: 100%;
@@ -17,3 +19,27 @@
   :host ::ng-deep .mat-tab-body-wrapper {
     flex: 1 1 auto;
   }
+
+  :host ::ng-deep .mat-tab-label{
+    height: 48px;
+    padding: 0 24px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: .6;
+    min-width: 160px;
+    text-align: left;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    border-bottom-width: 5px !important;
+    border-bottom-color: gray !important;
+}
+
+:host ::ng-deep .mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  background-color: rgb(200, 225, 245);
+  font-weight: 700;
+  border-radius: 16px !important;
+}

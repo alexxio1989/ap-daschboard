@@ -1,47 +1,45 @@
 <div class="card  w-100 p-3 mb-2">
-    <div class="col-12 bg-light p-3 d-flex justify-content-end">
-        <button mat-button >
-            Annulla
-            <img src="../../../../assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
-        </button>
-        <button mat-button >
-            Conferma
-            <img src="../../../../assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
-        </button>
-    </div>
-    <div class="col-12 bg-light p-3">
-        <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
-            <mat-step [stepControl]="firstFormGroup">
-              <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Fill out your name</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-              <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              You are now done.
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
-            </mat-step>
-          </mat-vertical-stepper>
-    </div>
+  <div class="col-12 bg-light p-3 d-flex justify-content-end">
+    <button mat-stroked-button class="button-error me-3" (click)="annulla()">
+      Annulla
+    </button>
+    <button mat-stroked-button class="button-success me-3" (click)="salva">
+      Conferma
+    </button>
+  </div>
+  <div class="col-12 bg-light p-3">
+    <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Fill out your address</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Address" formControlName="secondCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
 </div>

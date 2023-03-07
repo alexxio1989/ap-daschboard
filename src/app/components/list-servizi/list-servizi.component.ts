@@ -40,8 +40,6 @@ export class ListServiziComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.editorConfig = this.ds.editorConfig;
-    this.editorConfig.placeholder='Inserisci descrizione estesa prodotto/evento'
     this.domini = this.ts.domini;
     this.ss.getAll().subscribe(next=>{
       this.ds.sbjSpinner.next(false)
@@ -139,6 +137,24 @@ export class ListServiziComponent implements OnInit{
       this.ds.sbjErrorsNotification.next(error.error + " , Codice Errore " + error.status);
     })
     
+  }
+
+  retrieveProdotto(prodotto: ProdottoDto){
+    if(prodotto){
+
+    } else {
+      this.prodottoSelected = undefined;
+      this.addProdottoAction = false;
+    }
+  }
+
+  retrieveEvento(evento: EventoDto){
+    if(evento){
+
+    } else {
+      this.eventoSelected = undefined;
+      this.addEventoAction = false;
+    }
   }
 
 

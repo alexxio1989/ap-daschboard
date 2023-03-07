@@ -5,3 +5,20 @@
 @import 'styles/typography.scss';
 @import 'styles/util.scss';
 @import 'styles/custom-components.scss';
+
+
+.button-success{
+    border-color: #20c997 !important;
+    min-width: 120px !important;
+}
+
+.button-error{
+    border-color: #dc3545 !important;
+    min-width: 120px !important;
+}
+
+.button-primary{
+    border-color: #0d6efd !important;
+    min-width: 120px !important;
+}
+

@@ -25,7 +25,18 @@ import { ApFeFundamentalsLibModule } from '@alexxio1989/ap-fe-fundamentals-lib';
 import { EditorEventoComponent } from './components/list-servizi/editor-evento/editor-evento.component';
 import { EditorProdottoComponent } from './components/list-servizi/editor-prodotto/editor-prodotto.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatSelectModule} from '@angular/material/select';
+import { CurrencyMaskConfig, CurrencyMaskModule } from "ng2-currency-mask";
 
+export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
+  align: "right",
+  allowNegative: true,
+  decimal: ",",
+  precision: 2,
+  prefix: "R€ ",
+  suffix: "",
+  thousands: "."
+};
 
 @NgModule({
   declarations: [
@@ -57,7 +68,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatMenuModule,
     ApFeFundamentalsLibModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    CurrencyMaskModule
   ],
   providers: [{provide: 'environment', useValue: environment}],
   bootstrap: [AppComponent]

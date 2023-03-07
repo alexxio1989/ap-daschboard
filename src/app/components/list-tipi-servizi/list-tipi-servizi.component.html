@@ -1,61 +1,60 @@
 
 
-<div class="row">
-    <div *ngIf="!addAction" class="col-12 d-flex justify-content-end mb-3">
-        <button mat-button (click)="add()">
-            Aggiungi
-            <img src="/assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
+<div class="row px-3">
+    <div *ngIf="!addAction" class="col-12 d-flex justify-content-end mb-3 p-0">
+        <button mat-stroked-button class="button-primary" (click)="add()">
+            Aggiungi tipologia
         </button>
     </div>
     <div *ngIf="addAction" class="col-12 d-flex justify-content-end mb-3">
+        <button mat-stroked-button class="button-error me-3" (click)="addAction = false">
+            annulla
+        </button>
+        <button mat-stroked-button class="button-success" (click)="save()">
+            salva
+        </button>
+    </div>
+    
+    
+
+    <div class="col-12 mb-3 p-0">
+        <mat-divider></mat-divider>
+    </div>
+
+    <div *ngIf="addAction" class="col-12 d-flex justify-content-end">
         <mat-form-field appearance="outline" class="example-form-field w-100">
-            <mat-label>Inserisci nome tipo prodotto/evento</mat-label>
+            <mat-label>Titolo della tipologia </mat-label>
             <input matInput type="text" [(ngModel)]="typeSelected.descrizione">
             <button *ngIf="typeSelected.descrizione" matSuffix mat-icon-button aria-label="Clear" (click)="typeSelected.descrizione=''">
               <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>
     </div>
-    <div *ngIf="addAction" class="col-12 mb-3">
-        <mat-divider></mat-divider>
-    </div>
-    <div *ngIf="addAction" class="col-12 d-flex justify-content-end mb-3">
-        <angular-editor [(ngModel)]="typeSelected.descExt" [config]="editorConfig"></angular-editor>
+    <div *ngIf="addAction" class="col-12 d-flex justify-content-end mb-3 p-0">
+        <app-text-editor [title]="'Descrizione estesa della tipologia'" [(text)]="typeSelected.descExt"></app-text-editor>
 
-    </div>
-    <div *ngIf="addAction" class="col-12 d-flex justify-content-end mb-3">
-        <button mat-button (click)="addAction = false">
-            annulla
-        </button>
-        <button mat-button (click)="save()">
-            salva
-        </button>
-    </div>
-
-    <div class="col-12 mb-3">
-        <mat-divider></mat-divider>
-    </div>
-
-    <div class="col-12 mb-2">
-        <div class="col-12 bg-light p-3"> 
-            <p class="my-0"><strong>Le tipologie di prodotto/evento :</strong></p>
-        </div>
     </div>
 
     
+    
+</div>
 
-    <div class="col-12 px-3" *ngFor="let dominio of domini">
-        <div class="col-12 ps-2">
-            <p> - {{dominio.descrizione}}</p>
+<div *ngIf="!addAction" class="row px-3">
+    <div class="col-12 bg-light p-3 mb-3"> 
+        <p class="my-0"><strong>Le tipologie di prodotto ed evento :</strong></p>
+    </div>
+    <div class="col-12 border mb-3" *ngFor="let dominio of domini">
+        <div class="col-12 ps-2 pt-3">
+            <h5>{{dominio.descrizione}}</h5>
         </div>
         <div class="col-12 ps-5">
             <div [innerHTML]="dominio.descExt"></div>
         </div>
         <div class="col-12 d-flex justify-content-end mb-3">
-            <button mat-button (click)="edit(dominio)">
+            <button mat-button  (click)="edit(dominio)">
                 modifica
             </button>
-            <button mat-button (click)="save()">
+            <button mat-button color="accent" (click)="save()">
                 elimina
             </button>
         </div>

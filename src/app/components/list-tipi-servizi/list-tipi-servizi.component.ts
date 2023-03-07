@@ -22,7 +22,7 @@ export class ListTipiServiziComponent implements OnInit {
 
   ngOnInit(): void {
     this.editorConfig = this.ds.editorConfig;
-    this.editorConfig.placeholder='Inserisci descrizione estesa del tipo prodotto/evento'
+    this.editorConfig.placeholder='Descrizione estesa della tipologia'
     this.ts.getAll().subscribe(next=>{
       this.ds.sbjSpinner.next(false)
       this.domini = next;

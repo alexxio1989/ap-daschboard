@@ -1,5 +1,5 @@
-import { ProdottoDto } from '@alexxio1989/ap-fe-fundamentals-lib';
-import { Component, Input, OnInit } from '@angular/core';
+import { DominioDto, ProdottoDto, TipoServizoService } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,12 +9,24 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class EditorProdottoComponent implements OnInit {
   @Input() prodotto : ProdottoDto;
+  @Output() prodottoEmitter = new EventEmitter<ProdottoDto>();
 
-  constructor(private _formBuilder: FormBuilder) {}
-  firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
-  secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+  domini:DominioDto[] = []
+
+  constructor(private _formBuilder: FormBuilder,private ts:TipoServizoService) {}
+  nameFormGroup: FormGroup = this._formBuilder.group({nameCtrl: ['']});
+  typeFormGroup: FormGroup = this._formBuilder.group({typeCtrl: ['']});
+  priceFormGroup: FormGroup = this._formBuilder.group({priceCtrl: ['']});
 
   ngOnInit(): void {
+    this.domini = this.ts.domini
+  }
+  
+  annulla(){
+    this.prodottoEmitter.emit(undefined);
   }
 
+  salva(){
+    this.prodottoEmitter.emit(this.prodotto);
+  }
 }

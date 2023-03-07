@@ -1,49 +1,81 @@
 <div class="card  w-100 p-3 mb-2">
-    <div class="col-12 bg-light p-3 d-flex justify-content-end">
-        <button mat-button >
-            Annulla
-            <img src="/assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
-        </button>
-        <button mat-button >
-            Conferma
-            <img src="/assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
-        </button>
-    </div>
-    <div class="col-12 bg-light p-3 ">
-        <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
-            <mat-step [stepControl]="firstFormGroup">
-              <form [formGroup]="firstFormGroup">
-                <ng-template matStepLabel>Fill out your name</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step [stepControl]="secondFormGroup">
-              <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Fill out your address</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="secondCtrl" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Done</ng-template>
-              You are now done.
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
-            </mat-step>
-          </mat-vertical-stepper>
-    </div>
+  <div class="col-12 bg-light p-3 d-flex justify-content-end">
+    <button mat-stroked-button class="button-error me-3" (click)="annulla()">
+      Annulla
+    </button>
+    <button mat-stroked-button class="button-success me-3" (click)="salva">
+      Conferma
+    </button>
+  </div>
+  {{prodotto | json}}
+  <div class="col-12 bg-light p-3 ">
+    <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
+      <mat-step [stepControl]="nameFormGroup">
+        <form [formGroup]="nameFormGroup">
+          <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+              <ng-template matStepLabel>Nome del prodotto ( obbligatorio )</ng-template>
+              <mat-form-field class="w-50" appearance="fill">
+                <input matInput placeholder="Inserisci il nome del prodotto" [(ngModel)]="prodotto.nome" formControlName="nameCtrl" required>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+              <button mat-button matStepperNext>Avanti</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="typeFormGroup">
+        <form [formGroup]="typeFormGroup">
+
+          <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+              <ng-template matStepLabel>Seleziona il tipo di prodotto ( obbligatorio )</ng-template>
+              <mat-form-field class="w-50" appearance="fill">
+                <mat-label>Seleziona la tipologia</mat-label>
+                <mat-select disableRipple>
+                  <mat-option *ngFor="let type of domini" (click) = "prodotto.tipoServizio = type" value="1">{{type.descrizione}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+              <button mat-button matStepperPrevious>Indietro</button>
+            <button mat-button matStepperNext>Avanti</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="priceFormGroup">
+        <form [formGroup]="priceFormGroup">
+          <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+              <ng-template matStepLabel>Prezzo del prodotto ( obbligatorio )</ng-template>
+              <mat-form-field class="w-50" appearance="fill">
+                <input matInput type="text" [options]="{ prefix: '€ '}"  currencyMask  [(ngModel)]="prodotto.prezzo" placeholder="Inserisci il prezzo del prodotto" formControlName="priceCtrl" required/>
+
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+              <button mat-button matStepperNext>Avanti</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+  </div>
 </div>
-  
-  

@@ -1,40 +1,36 @@
 
 <div *ngIf="addProdottoAction" class="row">
-    <app-editor-prodotto></app-editor-prodotto>
+    <app-editor-prodotto [prodotto]="prodottoSelected" (prodottoEmitter) = "retrieveProdotto($event)"></app-editor-prodotto>
 </div>
 <div *ngIf="addEventoAction" class="row">
-    <app-editor-evento></app-editor-evento>
+    <app-editor-evento [evento]="eventoSelected" (eventoEmitter) = "retrieveEvento($event)"></app-editor-evento>
 </div>
 
 
-<div *ngIf="!addProdottoAction && !addEventoAction" class="row">
-    <div  class="col-12 d-flex justify-content-end mb-3">
-        <button mat-button (click)="add('prodotto')">
+<div *ngIf="!addProdottoAction && !addEventoAction" class="row px-3">
+    <div  class="col-12 d-flex justify-content-end mb-3 p-0">
+        <button mat-stroked-button class="button-primary me-3" (click)="add('prodotto')">
             Aggiungi Prodotto
-            <img src="/assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
         </button>
-        <button mat-button (click)="add('evento')">
+        <button mat-stroked-button class="button-primary" (click)="add('evento')">
             Aggiungi Evento
-            <img src="/assets/svg/square-plus.svg" class="img-buttons ms-2" alt="image"> 
         </button>
+    </div>
+    <div class="col-12 mb-3 p-0">
+        <mat-divider></mat-divider>
     </div>
 </div>
 
-
-
-<div *ngIf="!addProdottoAction && !addEventoAction">
-    <div  class="col-12 mb-2">
-        <div class="col-12 bg-light p-3"> 
-            <p class="my-0"><strong>Tutti i prodotti/eventi :</strong></p>
-        </div>
+<div *ngIf="!addProdottoAction && !addEventoAction" class="row  p-3">
+    <div class="col-12 bg-light p-3"> 
+        <p class="my-0"><strong>Elenco dei prodotti ed eventi :</strong></p>
     </div>
-
-    <div *ngIf="mapProdotti && mapProdotti.size > 0">
-        <div *ngFor="let value of mapProdotti | keyvalue" class="row mb-4 bg-light rounded p-2">
-            <div class="col-12 d-flex justify-content-center pt-3 pb-3">
+    <div *ngIf="mapProdotti && mapProdotti.size > 0" class="col-12">
+        <div *ngFor="let value of mapProdotti | keyvalue" class="col-12">
+            <div class="col-12 pt-3 pb-3 mt-2">
                 <p class="text-h3"><strong>Prodotti di {{value.value[0].tipoServizio.descrizione}}</strong></p>
             </div>
-            <div class="col-12 d-flex justify-content-center pt-3 pb-3">
+            <div class="col-12 d-flex justify-content-center  pb-3">
                 <p [innerHTML]="value.value[0].tipoServizio.descExt"></p>
             </div>
             <div class="col-12 px-3 py-3 {{ds.isMobile ? '' : 'd-flex justify-content-around'  }} bg-white mt-2">
@@ -51,34 +47,36 @@
                 </div>
             </div>
         </div>
+
     </div>
-    
-    
-    
-    <div *ngIf="mapEventi && mapEventi.size > 0">
-        <div *ngFor="let value of mapEventi | keyvalue" class="row mb-4 bg-light rounded p-2">
-            <div class="col-12 d-flex justify-content-center pt-3 pb-3">
-                <p class="text-h3"><strong>Eventi di {{value.value[0].tipoServizio.descrizione}}</strong></p>
+
+    <div *ngIf="mapEventi && mapEventi.size > 0" class="col-12">
+        <div *ngFor="let value of mapEventi | keyvalue" class="col-12">
+            <div class="col-12 pt-3 pb-3 mt-2">
+                <p class="text-h3"><strong>Prodotti di {{value.value[0].tipoServizio.descrizione}}</strong></p>
             </div>
-            <div class="col-12 d-flex justify-content-center pt-3 pb-3">
+            <div class="col-12 d-flex justify-content-center  pb-3">
                 <p [innerHTML]="value.value[0].tipoServizio.descExt"></p>
             </div>
             <div class="col-12 px-3 py-3 {{ds.isMobile ? '' : 'd-flex justify-content-around'  }} bg-white mt-2">
-                <div *ngFor="let evento of value.value"
-                    class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center flex-column inner-corsi rounded">
+                <div *ngFor="let evento of value.value" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center flex-column inner-corsi rounded">
                     <div class="col-12 d-flex justify-content-center bg-light mb-2">
                         <button mat-button (click)="eventoSelected = evento ; delete('evento')">
                             Elimina
                         </button>
-                        <button mat-button (click)="eventoSelected = evento ; addEventoAction = true">
+                        <button mat-button (click)="eventoSelected = evento ; addProdottoAction = true">
                             Modifica
                         </button>
                     </div>
                     {{evento | json}}
-<!--                     <app-card-evento [evento]="evento"></app-card-evento>
- -->                </div>
+                </div>
             </div>
         </div>
+
     </div>
-    
 </div>
+
+
+
+    
+
