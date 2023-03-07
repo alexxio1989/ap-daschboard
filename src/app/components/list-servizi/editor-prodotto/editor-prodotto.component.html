@@ -7,7 +7,7 @@
       Conferma
     </button>
   </div>
-  {{prodotto | json}}
+
   <div class="col-12 bg-light p-3 ">
     <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
       <mat-step [stepControl]="nameFormGroup">
@@ -69,11 +69,31 @@
         </form>
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+        <form>
+          <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+              <ng-template matStepLabel>Descrizione del prodotto</ng-template>
+              <app-text-editor [title]="'Descrizione estesa del prodotto'" [(text)]="prodotto.descrizione"></app-text-editor>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+              <button mat-button matStepperNext>Avanti</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <div class="row mt-2">
+          <div class="col-12 d-flex justify-content-center px-0">
+            <ng-template matStepLabel>Immagini del prodotto</ng-template>
+            <app-images-editor [images]="prodotto.images" (imagesEmitter)="retrieveImages($event)"></app-images-editor>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 d-flex justify-content-end">
+            <button mat-button matStepperPrevious>Indietro</button>
+          </div>
         </div>
       </mat-step>
     </mat-vertical-stepper>

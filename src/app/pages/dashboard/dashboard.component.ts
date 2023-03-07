@@ -12,6 +12,7 @@ import { DialogLoginComponent } from 'src/app/dialog/dialog-login/dialog-login.c
 export class DashboardComponent implements OnInit {
 
   loaded = false;
+  activeTab = 0;
 
   constructor(
     public us: UtenteService,
@@ -29,6 +30,9 @@ export class DashboardComponent implements OnInit {
       if (!this.us.isSU) {
         this.route.navigate(['']);
       } else {
+        if(localStorage.getItem('ACTIVE_TAB_ADMIN')){
+          this.activeTab = parseInt(localStorage.getItem('ACTIVE_TAB_ADMIN'))
+        }
         this.loaded = true
       }
     }
@@ -57,6 +61,13 @@ export class DashboardComponent implements OnInit {
         width: '40%',
       });
     }
+  }
+
+  tabChanged(tab:any){
+    this.activeTab = tab.index
+    console.log(this.activeTab)
+    localStorage.removeItem('ACTIVE_TAB_ADMIN')
+    localStorage.setItem('ACTIVE_TAB_ADMIN',''+this.activeTab)
   }
 
 }

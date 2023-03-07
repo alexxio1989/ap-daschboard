@@ -1,4 +1,4 @@
-import { DominioDto, ProdottoDto, TipoServizoService } from '@alexxio1989/ap-fe-fundamentals-lib';
+import { DominioDto, ImageDto, ProdottoDto, TipoServizoService } from '@alexxio1989/ap-fe-fundamentals-lib';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -20,6 +20,10 @@ export class EditorProdottoComponent implements OnInit {
 
   ngOnInit(): void {
     this.domini = this.ts.domini
+  }
+
+  retrieveImages(images: ImageDto[]){
+    this.prodotto.images = images;
   }
   
   annulla(){

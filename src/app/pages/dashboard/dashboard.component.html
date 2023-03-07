@@ -2,7 +2,7 @@
 
 <div *ngIf="loaded" class="row w-100 me-0 ms-0">
     <div class="col-12 p-3">
-        <mat-tab-group class="card-glass">
+        <mat-tab-group (selectedTabChange)="tabChanged($event)" [selectedIndex]="activeTab" class="card-glass">
             <mat-tab label="Gestione tipologie di prodotti ed eventi" class="shadow">
                 <app-list-tipi-servizi></app-list-tipi-servizi>
             </mat-tab>

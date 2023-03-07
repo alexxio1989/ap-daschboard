@@ -57,20 +57,13 @@ export class ListServiziComponent implements OnInit{
   }
 
   add(type:string){
-    let listImages : ImageDto[] = []
-    let defaultImg = new ImageDto();
-    defaultImg.url = 'default'
-    listImages.push(defaultImg)
-    
     if('prodotto' === type){
       this.prodottoSelected = new ProdottoDto();
-      this.prodottoSelected.images = listImages
       this.addProdottoAction = true;
       this.prodottoSelected.prezzo = 0
       this.ds.editorConfig.placeholder='Inserisci descrizione del prodotto'
     } else {
       this.eventoSelected = new EventoDto();
-      this.eventoSelected.images = listImages
       this.ds.editorConfig.placeholder='Inserisci descrizione dell evento'
       this.eventoSelected.prezzo = 0
       this.addEventoAction = true;
