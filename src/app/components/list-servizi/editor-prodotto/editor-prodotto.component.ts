@@ -22,6 +22,10 @@ export class EditorProdottoComponent implements OnInit {
     this.domini = this.ts.domini
   }
 
+  onChangeTypeProdotto(event:any){
+    this.typeFormGroup.setValue(event)
+  }
+
   retrieveImages(images: ImageDto[]){
     this.prodotto.images = images;
   }

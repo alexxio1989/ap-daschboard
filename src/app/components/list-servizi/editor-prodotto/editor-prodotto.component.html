@@ -9,7 +9,7 @@
   </div>
 
   <div class="col-12 bg-light p-3 ">
-    <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
+    <mat-vertical-stepper [linear]="true" #stepper [animationDuration]="'1000'">
       <mat-step [stepControl]="nameFormGroup">
         <form [formGroup]="nameFormGroup">
           <div class="row mt-2">
@@ -17,6 +17,9 @@
               <ng-template matStepLabel>Nome del prodotto ( obbligatorio )</ng-template>
               <mat-form-field class="w-50" appearance="fill">
                 <input matInput placeholder="Inserisci il nome del prodotto" [(ngModel)]="prodotto.nome" formControlName="nameCtrl" required>
+                <mat-error *ngIf="nameFormGroup.controls['nameCtrl'].invalid">
+                  Il nome del prodotto è un dato obbligatorio
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -35,16 +38,19 @@
               <ng-template matStepLabel>Seleziona il tipo di prodotto ( obbligatorio )</ng-template>
               <mat-form-field class="w-50" appearance="fill">
                 <mat-label>Seleziona la tipologia</mat-label>
-                <mat-select disableRipple>
-                  <mat-option *ngFor="let type of domini" (click) = "prodotto.tipoServizio = type" value="1">{{type.descrizione}}</mat-option>
+                <mat-select (change)="onChangeTypeProdotto($event)" disableRipple formControlName="typeCtrl" required>
+                  <mat-option *ngFor="let type of domini" (click) = "prodotto.tipoServizio = type" [value]="type">{{type.descrizione}}</mat-option>
                 </mat-select>
+                <mat-error *ngIf="typeFormGroup.controls['typeCtrl'].invalid">
+                  Il tipo di prodotto è un dato obbligatorio
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
           <div class="row">
             <div class="col-12 d-flex justify-content-end">
               <button mat-button matStepperPrevious>Indietro</button>
-            <button mat-button matStepperNext>Avanti</button>
+              <button mat-button matStepperNext>Avanti</button>
             </div>
           </div>
         </form>
@@ -63,6 +69,7 @@
           </div>
           <div class="row">
             <div class="col-12 d-flex justify-content-end">
+              <button mat-button matStepperPrevious>Indietro</button>
               <button mat-button matStepperNext>Avanti</button>
             </div>
           </div>
