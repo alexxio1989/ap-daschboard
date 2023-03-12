@@ -25,7 +25,7 @@
           </div>
           <div class="row">
             <div class="col-12 d-flex justify-content-end">
-              <button mat-button matStepperNext>Avanti</button>
+              <button mat-stroked-button class="button-primary me-3" matStepperNext>Avanti</button>
             </div>
           </div>
         </form>
@@ -49,8 +49,8 @@
           </div>
           <div class="row">
             <div class="col-12 d-flex justify-content-end">
-              <button mat-button matStepperPrevious>Indietro</button>
-              <button mat-button matStepperNext>Avanti</button>
+              <button mat-stroked-button class="button-yellow me-3" matStepperPrevious>Indietro</button>
+              <button mat-stroked-button class="button-primary me-3" matStepperNext>Avanti</button>
             </div>
           </div>
         </form>
@@ -63,14 +63,16 @@
               <ng-template matStepLabel>Prezzo del prodotto ( obbligatorio )</ng-template>
               <mat-form-field class="w-50" appearance="fill">
                 <input matInput type="text" [options]="{ prefix: '€ '}"  currencyMask  [(ngModel)]="prodotto.prezzo" placeholder="Inserisci il prezzo del prodotto" formControlName="priceCtrl" required/>
-
+                <mat-error *ngIf="priceFormGroup.controls['priceCtrl'].invalid">
+                  Il prezzo del prodotto è un dato obbligatorio
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
           <div class="row">
             <div class="col-12 d-flex justify-content-end">
-              <button mat-button matStepperPrevious>Indietro</button>
-              <button mat-button matStepperNext>Avanti</button>
+              <button mat-stroked-button class="button-yellow me-3" matStepperPrevious>Indietro</button>
+              <button mat-stroked-button class="button-primary me-3" matStepperNext>Avanti</button>
             </div>
           </div>
         </form>
@@ -85,7 +87,8 @@
           </div>
           <div class="row">
             <div class="col-12 d-flex justify-content-end">
-              <button mat-button matStepperNext>Avanti</button>
+              <button mat-stroked-button class="button-yellow me-3" matStepperPrevious>Indietro</button>
+              <button mat-stroked-button class="button-primary me-3" matStepperNext>Avanti</button>
             </div>
           </div>
         </form>
@@ -99,7 +102,7 @@
         </div>
         <div class="row">
           <div class="col-12 d-flex justify-content-end">
-            <button mat-button matStepperPrevious>Indietro</button>
+            <button mat-stroked-button class="button-yellow me-3" matStepperPrevious>Indietro</button>
           </div>
         </div>
       </mat-step>
