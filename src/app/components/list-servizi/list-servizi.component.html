@@ -43,7 +43,7 @@
                             Modifica
                         </button>
                     </div>
-                    {{prodotto | json}}
+                    <app-card-servizio [prodotto]="prodotto"></app-card-servizio>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
     <div *ngIf="mapEventi && mapEventi.size > 0" class="col-12">
         <div *ngFor="let value of mapEventi | keyvalue" class="col-12">
             <div class="col-12 pt-3 pb-3 mt-2">
-                <p class="text-h3"><strong>Prodotti di {{value.value[0].tipoServizio.descrizione}}</strong></p>
+                <p class="text-h3"><strong>Evento di {{value.value[0].tipoServizio.descrizione}}</strong></p>
             </div>
             <div class="col-12 d-flex justify-content-center  pb-3">
                 <p [innerHTML]="value.value[0].tipoServizio.descExt"></p>
@@ -68,7 +68,7 @@
                             Modifica
                         </button>
                     </div>
-                    {{evento | json}}
+                    <app-card-servizio [evento]="evento"></app-card-servizio>
                 </div>
             </div>
         </div>

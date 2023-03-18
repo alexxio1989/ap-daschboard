@@ -1,16 +1,7 @@
 <div class="card  w-100 p-3 mb-2">
-  <div class="col-12 bg-light p-3 d-flex justify-content-end">
-    <button mat-stroked-button class="button-error me-3" (click)="annulla()">
-      Annulla
-    </button>
-    <button mat-stroked-button class="button-success me-3" (click)="salva">
-      Conferma
-    </button>
-  </div>
-
   <div class="col-12 bg-light p-3 ">
     <mat-vertical-stepper [linear]="true" #stepper [animationDuration]="'1000'">
-      <mat-step [stepControl]="nameFormGroup">
+      <mat-step [stepControl]="nameFormGroup" #step1>
         <form [formGroup]="nameFormGroup">
           <div class="row mt-2">
             <div class="col-12 d-flex justify-content-center">
@@ -30,7 +21,7 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="typeFormGroup">
+      <mat-step [stepControl]="typeFormGroup" #step2>
         <form [formGroup]="typeFormGroup">
 
           <div class="row mt-2">
@@ -38,8 +29,8 @@
               <ng-template matStepLabel>Seleziona il tipo di prodotto ( obbligatorio )</ng-template>
               <mat-form-field class="w-50" appearance="fill">
                 <mat-label>Seleziona la tipologia</mat-label>
-                <mat-select (change)="onChangeTypeProdotto($event)" disableRipple formControlName="typeCtrl" required>
-                  <mat-option *ngFor="let type of domini" (click) = "prodotto.tipoServizio = type" [value]="type">{{type.descrizione}}</mat-option>
+                <mat-select [(ngModel)]="prodotto.tipoServizio" (change)="onChangeTypeProdotto($event)" disableRipple formControlName="typeCtrl" required>
+                  <mat-option *ngFor="let type of domini" (click) = "prodotto.tipoServizio = type" [value]="prodotto.tipoServizio">{{type.descrizione}}</mat-option>
                 </mat-select>
                 <mat-error *ngIf="typeFormGroup.controls['typeCtrl'].invalid">
                   Il tipo di prodotto è un dato obbligatorio
@@ -56,7 +47,24 @@
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="priceFormGroup">
+      <mat-step>
+        <form>
+          <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+              <ng-template matStepLabel>Sottotitolo del prodotto</ng-template>
+              <app-text-editor [title]="'Descrizione estesa del prodotto'" [(text)]="prodotto.nomeExt"></app-text-editor>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+              <button mat-stroked-button class="button-yellow me-3" matStepperPrevious>Indietro</button>
+              <button mat-stroked-button class="button-primary me-3" matStepperNext>Avanti</button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="priceFormGroup" #step3>
         <form [formGroup]="priceFormGroup">
           <div class="row mt-2">
             <div class="col-12 d-flex justify-content-center">
@@ -93,7 +101,7 @@
           </div>
         </form>
       </mat-step>
-      <mat-step>
+      <mat-step #step>
         <div class="row mt-2">
           <div class="col-12 d-flex justify-content-center px-0">
             <ng-template matStepLabel>Immagini del prodotto</ng-template>
@@ -106,6 +114,16 @@
           </div>
         </div>
       </mat-step>
+      
     </mat-vertical-stepper>
+  </div>
+
+  <div class="col-12 bg-light p-3 d-flex justify-content-end">
+    <button mat-stroked-button class="button-error me-3" (click)="annulla()">
+      Annulla
+    </button>
+    <button *ngIf="step1.completed && step2.completed && step3.completed" mat-stroked-button class="button-success me-3" (click)="salva()">
+      Salva
+    </button>
   </div>
 </div>

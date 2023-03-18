@@ -104,7 +104,17 @@ export class ListServiziComponent implements OnInit{
       this.close('prodotto')
       this.prodotti = next.prodotti;
       this.eventi = next.eventi;
+      this.mapProdotti = getMapProdotti(this.prodotti)
+      this.mapEventi = getMapEventi(this.eventi)
+      this.addProdottoAction = false;
+      this.addEventoAction = false;
+      this.eventoSelected = undefined;
+      this.prodottoSelected = undefined;
     }, error => {
+      this.addProdottoAction = false;
+      this.addEventoAction = false;
+      this.eventoSelected = undefined;
+      this.prodottoSelected = undefined;
       this.ds.sbjSpinner.next(false);
       this.ds.sbjErrorsNotification.next(error.error + " , Codice Errore " + error.status);
     })
@@ -120,11 +130,17 @@ export class ListServiziComponent implements OnInit{
       servizio = this.eventoSelected;
     }
 
-    this.ss.delete(servizio).subscribe(next=>{
+    this.ss.delete(servizio.id).subscribe(next=>{
       this.ds.sbjSpinner.next(false)
       this.close(type)
       this.prodotti = next.prodotti;
       this.eventi = next.eventi;
+      this.mapProdotti = getMapProdotti(this.prodotti)
+      this.mapEventi = getMapEventi(this.eventi)
+      this.addProdottoAction = false;
+      this.addEventoAction = false;
+      this.eventoSelected = undefined;
+      this.prodottoSelected = undefined;
     }, error => {
       this.ds.sbjSpinner.next(false);
       this.ds.sbjErrorsNotification.next(error.error + " , Codice Errore " + error.status);
@@ -134,7 +150,7 @@ export class ListServiziComponent implements OnInit{
 
   retrieveProdotto(prodotto: ProdottoDto){
     if(prodotto){
-
+      this.save('prodotto');
     } else {
       this.prodottoSelected = undefined;
       this.addProdottoAction = false;
@@ -143,7 +159,7 @@ export class ListServiziComponent implements OnInit{
 
   retrieveEvento(evento: EventoDto){
     if(evento){
-
+      this.save('evento');
     } else {
       this.eventoSelected = undefined;
       this.addEventoAction = false;

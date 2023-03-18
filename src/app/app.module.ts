@@ -27,6 +27,7 @@ import { EditorProdottoComponent } from './components/list-servizi/editor-prodot
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import { CurrencyMaskConfig, CurrencyMaskModule } from "ng2-currency-mask";
+import { CardServizioComponent } from './components/card-servizio/card-servizio.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
   align: "right",
@@ -48,7 +49,8 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     ListTipiServiziComponent,
     ListServiziComponent,
     EditorEventoComponent,
-    EditorProdottoComponent
+    EditorProdottoComponent,
+    CardServizioComponent
   ],
   imports: [
     HttpClientModule,
