@@ -48,13 +48,13 @@
             <h5>{{dominio.descrizione}}</h5>
         </div>
         <div class="col-12 ps-5">
-            <div [innerHTML]="dominio.descExt"></div>
+            <div class="small" [innerHTML]="dominio.descExt"></div>
         </div>
         <div class="col-12 d-flex justify-content-end mb-3">
             <button mat-button  (click)="edit(dominio)">
                 modifica
             </button>
-            <button mat-button color="accent" (click)="save()">
+            <button mat-button color="accent" (click)="delete(dominio)">
                 elimina
             </button>
         </div>

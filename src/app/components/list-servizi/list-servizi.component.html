@@ -27,15 +27,15 @@
     </div>
     <div *ngIf="mapProdotti && mapProdotti.size > 0" class="col-12">
         <div *ngFor="let value of mapProdotti | keyvalue" class="col-12">
-            <div class="col-12 pt-3 pb-3 mt-2">
+            <div class="col-12 pt-3 pb-0 mt-2">
                 <p class="text-h3"><strong>Prodotti di {{value.value[0].tipoServizio.descrizione}}</strong></p>
             </div>
             <div class="col-12 d-flex justify-content-center  pb-3">
-                <p [innerHTML]="value.value[0].tipoServizio.descExt"></p>
+                <p class="small" [innerHTML]="value.value[0].tipoServizio.descExt"></p>
             </div>
             <div class="col-12 px-3 py-3 {{ds.isMobile ? '' : 'd-flex justify-content-around'  }} bg-white mt-2">
                 <div *ngFor="let prodotto of value.value" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center flex-column inner-corsi rounded">
-                    <div class="col-12 d-flex justify-content-center bg-light mb-2">
+                    <div class="col-12 d-flex justify-content-center mb-2">
                         <button mat-button (click)="prodottoSelected = prodotto ; delete('prodotto')">
                             Elimina
                         </button>
@@ -43,7 +43,10 @@
                             Modifica
                         </button>
                     </div>
-                    <app-card-servizio [prodotto]="prodotto"></app-card-servizio>
+                    <div class="col-12 d-flex justify-content-center">
+                        <app-card-servizio [prodotto]="prodotto"></app-card-servizio>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,15 +55,16 @@
 
     <div *ngIf="mapEventi && mapEventi.size > 0" class="col-12">
         <div *ngFor="let value of mapEventi | keyvalue" class="col-12">
-            <div class="col-12 pt-3 pb-3 mt-2">
+            <div class="col-12 pt-3 pb-0 mt-2">
                 <p class="text-h3"><strong>Evento di {{value.value[0].tipoServizio.descrizione}}</strong></p>
             </div>
             <div class="col-12 d-flex justify-content-center  pb-3">
-                <p [innerHTML]="value.value[0].tipoServizio.descExt"></p>
+                <p class="small" [innerHTML]="value.value[0].tipoServizio.descExt"></p>
             </div>
             <div class="col-12 px-3 py-3 {{ds.isMobile ? '' : 'd-flex justify-content-around'  }} bg-white mt-2">
                 <div *ngFor="let evento of value.value" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 d-flex justify-content-center flex-column inner-corsi rounded">
-                    <div class="col-12 d-flex justify-content-center bg-light mb-2">
+                 
+                    <div class="col-12 d-flex justify-content-center mb-2">
                         <button mat-button (click)="eventoSelected = evento ; delete('evento')">
                             Elimina
                         </button>
@@ -68,7 +72,10 @@
                             Modifica
                         </button>
                     </div>
-                    <app-card-servizio [evento]="evento"></app-card-servizio>
+                    <div class="col-12 d-flex justify-content-center">
+                        <app-card-servizio [evento]="evento"></app-card-servizio>
+
+                    </div>
                 </div>
             </div>
         </div>
